@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// fix: token string hai, JSON.parse ki zaroorat nahi
+// token string hai, JSON.parse ki zaroorat nahi
 const token = localStorage.getItem("token");
 
 const initialState = {
     token: token || null,
-    user: null,
 }
 
 const authSlice = createSlice({
