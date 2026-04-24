@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import ViewModal from './ViewModal';
+import CheckHomeworkModal from '../Teacher/CheckHomeworkModal';
 
 const Right = ({ sub, homework }) => {
 
     const [viewModal, setViewModal] = useState(null)
-    const [check, setCheck] = useState(null);
+    const [checkModal, setCheckModal] = useState(null);
+
+    console.log({ sub })
 
 
     return (
@@ -26,9 +29,11 @@ const Right = ({ sub, homework }) => {
                 </button>
 
                 <button
-
-                    className="text-xs px-3 py-1.5 bg-green-600 rounded-lg hover:bg-green-700 cursor-pointer">
-                    Check
+                    onClick={() => sub?.marks === 0 ? setCheckModal(homework?._id) : setViewModal(sub)}
+                    className="text-xs px-3 py-1.5 bg-green-600 rounded-lg hover:bg-green-700 cursor-pointer
+                    min-w-16
+                    ">
+                    {sub?.marks == 0 ? "check" : "checked"}
                 </button>
             </div>
 
@@ -43,6 +48,12 @@ const Right = ({ sub, homework }) => {
 
             }
             {/* check modal */}
+            {
+                checkModal && <CheckHomeworkModal
+                    submission={sub}
+                    onClose={() => setCheckModal(null)}
+                />
+            }
         </div>
     )
 }

@@ -51,7 +51,7 @@ export const createResult = async (homeworkId, resultData, token) => {
         const res = await apiConnector(
             "POST",
             url,
-            resultData,                  // { marks, feedback }
+            resultData,
             authHeader(token)
         );
         toast.success(res.data?.message || "Result saved!", { id: toastId });
