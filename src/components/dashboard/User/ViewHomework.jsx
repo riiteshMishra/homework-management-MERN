@@ -100,11 +100,11 @@ const ViewHomework = () => {
                                 {/* Student */}
                                 <div>
                                     <p className="text-sm font-medium capitalize">
-                                        {sub.student?.name || "Unknown"}
+                                        {sub?.student?.name || "Unknown"}
                                     </p>
-                                    <p className="text-xs text-gray-400 text-wrap">
-                                        {sub.student?.email}
-                                    </p>
+                                    {/* <p className="text-xs text-gray-400 text-wrap">
+                                        {sub?.student?.email}
+                                    </p> */}
                                 </div>
 
                                 {/* Right */}

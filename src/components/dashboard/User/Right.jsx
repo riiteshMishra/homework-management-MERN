@@ -7,9 +7,6 @@ const Right = ({ sub, homework }) => {
     const [viewModal, setViewModal] = useState(null)
     const [checkModal, setCheckModal] = useState(null);
 
-    console.log({ sub })
-
-
     return (
         <div className="flex items-center  gap-3 flex-col sm:flex-row">
             <span className="text-xs text-gray-400">
