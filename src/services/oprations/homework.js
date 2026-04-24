@@ -135,7 +135,7 @@ export const getHomeworkById = async (homeworkId, token) => {
         if (!res?.data?.success) {
             throw new Error("Failed to fetch homework");
         }
-
+        console.log("GET HOMEWORK API RESPONSE", res)
         return res.data.data;
     } catch (err) {
         console.log("GET_HOMEWORK_BY_ID ERROR:", err);

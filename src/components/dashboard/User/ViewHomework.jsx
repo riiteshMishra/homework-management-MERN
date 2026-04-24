@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getHomeworkById } from "../../../services/oprations/homework";
+import Loading from "./Loading";
+import Right from "./Right";
 
 const statusStyles = {
     published: "bg-green-100 text-green-700",
@@ -15,6 +17,7 @@ const ViewHomework = () => {
 
     const [homework, setHomework] = useState(null);
     const [loading, setLoading] = useState(true);
+
 
     // ================= FETCH =================
     useEffect(() => {
@@ -33,16 +36,7 @@ const ViewHomework = () => {
     // ================= LOADING =================
     if (loading) {
         return (
-            <div className="min-h-screen bg-gray-900 p-6 animate-pulse text-white">
-                <div className="h-6 w-60 bg-gray-700 rounded mb-3"></div>
-                <div className="h-4 w-40 bg-gray-700 rounded mb-6"></div>
-
-                <div className="h-20 bg-gray-800 rounded-xl mb-4"></div>
-
-                {[1, 2, 3].map((_, i) => (
-                    <div key={i} className="h-16 bg-gray-800 rounded-xl mb-3"></div>
-                ))}
-            </div>
+            <Loading />
         );
     }
 
@@ -100,37 +94,26 @@ const ViewHomework = () => {
                         {homework?.submissions?.map((sub, i) => (
                             <div
                                 key={sub._id || i}
-                                className="bg-gray-800 rounded-xl p-4 flex items-center justify-between"
+                                className="bg-gray-800 rounded-xl p-4 flex items-center justify-between gap-5 sm:flex-row flex-col "
                             >
                                 {/* Student */}
                                 <div>
-                                    <p className="text-sm font-medium">
-                                        {sub.students?.name || "Unknown"}
+                                    <p className="text-sm font-medium capitalize">
+                                        {sub.student?.name || "Unknown"}
                                     </p>
-                                    <p className="text-xs text-gray-400">
+                                    <p className="text-xs text-gray-400 text-wrap">
                                         {sub.student?.email}
                                     </p>
                                 </div>
 
                                 {/* Right */}
-                                <div className="flex items-center gap-3">
-                                    <span className="text-xs text-gray-400">
-                                        {new Date(sub.createdAt).toLocaleDateString()}
-                                    </span>
-
-                                    <button className="text-xs px-3 py-1.5 bg-blue-600 rounded-lg hover:bg-blue-700">
-                                        View
-                                    </button>
-
-                                    <button className="text-xs px-3 py-1.5 bg-green-600 rounded-lg hover:bg-green-700">
-                                        Check
-                                    </button>
-                                </div>
+                                <Right sub={sub} homework={homework} />
                             </div>
                         ))}
                     </div>
                 )}
             </div>
+
 
         </div>
     );
