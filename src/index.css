@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.center {
+  margin: 0 auto;
+}
