@@ -94,12 +94,12 @@ const ViewHomework = () => {
                         {homework?.submissions?.map((sub, i) => (
                             <div
                                 key={sub._id || i}
-                                className="bg-gray-800 rounded-xl p-4 flex items-center justify-between gap-5 sm:flex-row flex-col "
+                                className="bg-gray-800 rounded-xl p-4 flex items-center justify-between gap-5  "
                             >
 
                                 {/* Student */}
                                 <div>
-                                    <p className="text-sm font-medium capitalize">
+                                    <p className="text-xs sm:text-sm font-medium capitalize">
                                         {sub?.student?.name || "Unknown"}
                                     </p>
                                     {/* <p className="text-xs text-gray-400 text-wrap">

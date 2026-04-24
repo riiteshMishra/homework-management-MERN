@@ -8,7 +8,7 @@ const Right = ({ sub, homework }) => {
     const [checkModal, setCheckModal] = useState(null);
 
     return (
-        <div className="flex items-center  gap-3 flex-col sm:flex-row">
+        <div className="flex items-center  gap-3">
             <span className="text-xs text-gray-400">
                 {new Date(sub?.submittedAt
                 ).toLocaleDateString("en-IN", {
