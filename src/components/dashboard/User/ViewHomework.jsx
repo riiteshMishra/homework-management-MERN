@@ -31,7 +31,7 @@ const ViewHomework = () => {
         };
 
         fetchHomework();
-    }, []);
+    }, [homeworkId, token]);
 
     // ================= LOADING =================
     if (loading) {

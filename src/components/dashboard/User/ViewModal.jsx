@@ -8,7 +8,6 @@ import { FaLink } from "react-icons/fa";
 import { FiClock } from "react-icons/fi";
 
 const ViewModal = ({ viewModal, onClose }) => {
-    if (!viewModal) return null;
 
     const formatDate = (date) => {
         if (!date) return "N/A";
@@ -22,11 +21,15 @@ const ViewModal = ({ viewModal, onClose }) => {
     };
 
     useEffect(() => {
+        if (!viewModal) return;
+
         document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = "auto";
         };
-    }, []);
+    }, [viewModal]);
+
+    if (!viewModal) return null;
 
     return (
         <AnimatePresence>

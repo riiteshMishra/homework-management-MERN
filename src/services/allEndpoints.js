@@ -27,3 +27,8 @@ export const SUBMISSION_API = {
     CREATE_RESULT: "/submission/create-result/:homeworkId",
     GET_STUDENT_RESULT: "/submission/result/:homeworkId"
 }
+
+export const TEACHER_API = {
+    BAN_STUDENT: "/teacher/ban-student",
+    DELETE_STUDENT: "/teacher/delete-students",
+}
