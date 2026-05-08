@@ -26,7 +26,6 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/homework' element={<Homeworks />} />
-
         {
           !token && <Route path='/login' element={<Login />} />
         }

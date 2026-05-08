@@ -31,8 +31,7 @@ export const signup = async (formData) => {
 
 
 // ================= LOGIN =================
-export const login = async (formData, navigate, dispatch) => {
-    const toastId = toast.loading("Signing in...");
+export const login = async (formData, navigate, dispatch, setBan) => {
     try {
         const res = await apiConnector("POST", AUTH_API.LOGIN, formData);
 
@@ -53,10 +52,11 @@ export const login = async (formData, navigate, dispatch) => {
 
         return res.data;
     } catch (err) {
-        console.log("login api err", err);
+        const errMsg = getErrorMessage(err);
+        if (errMsg === "This account is banned")
+            setBan(true);
+
         toast.error(getErrorMessage(err));
-    } finally {
-        toast.dismiss(toastId);
     }
 };
 

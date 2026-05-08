@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux"
 import { setToken } from "../../toolkit/auth.slice"
 import { login } from "../../services/oprations/auth"
 import { setUser } from "../../toolkit/user.slice"
+import Ban from "../../pages/Ban"
+import Loader from "../common/Loader"
 
 const LoginForm = ({ setIsLogin }) => {
 
@@ -11,6 +13,7 @@ const LoginForm = ({ setIsLogin }) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const navigate = useNavigate();
+    const [ban, setBan] = useState(false);
 
     // Form data
     const [formData, setFormData] = useState({
@@ -34,16 +37,20 @@ const LoginForm = ({ setIsLogin }) => {
         e.preventDefault()
         setLoading(true)
         try {
-            const res = await login(formData, navigate, dispatch);
-            console.log("res", res)
-            dispatch(setToken(res?.token));
-            dispatch(setUser(res?.user))
+            const res = await login(formData, navigate, dispatch, setBan);
         } catch (err) {
             setError(err?.response?.data?.message || "Something went wrong")
         } finally {
             setLoading(false)
         }
     }
+
+    if (ban) return <Ban />
+
+    if (loading) return <Loader
+        title="Logging In"
+        message="Verifying your credentials and preparing your dashboard..."
+    />
 
     return (
         <div>
